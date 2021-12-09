@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "videolabel")
 public class VideoLabel {
 
     @Id
