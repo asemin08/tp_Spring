@@ -43,6 +43,14 @@ public class VideoLauncher {
         em.persist(videoLabel3);
         em.persist(video);
 
+//        Video found = em.find(Video.class, 1);
+//        System.out.println("Video trouvée" + found);
+
+        String query = "select * from Video where title = 'toto'";
+        Query query1 = em.createNativeQuery(query, Video.class);
+
+        System.out.println(query1.getResultList());
+
         //5. Commit de la transation
 
         transaction.commit();
