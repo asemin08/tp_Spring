@@ -3,6 +3,10 @@ package fr.ensup.video.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "video")
@@ -14,6 +18,9 @@ public class Video {
     private long id;
     private String title;
     private  String type;
+
+    @OneToMany
+    Set<VideoLabel> videoLabels = new HashSet<>();
 
 
     public Video(String title, String type) {
@@ -29,6 +36,8 @@ public class Video {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+
 
     public Video(long id, String title, String type) {
         this.id = id;
@@ -61,5 +70,13 @@ public class Video {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Set<VideoLabel> getVideoLabels() {
+        return videoLabels;
+    }
+
+    public void setVideoLabels(Set<VideoLabel> videoLabels) {
+        this.videoLabels = videoLabels;
     }
 }
